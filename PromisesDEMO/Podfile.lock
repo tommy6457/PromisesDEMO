@@ -1,0 +1,20 @@
+PODS:
+  - PromisesObjC (2.1.0)
+  - PromisesSwift (2.1.0):
+    - PromisesObjC (= 2.1.0)
+
+DEPENDENCIES:
+  - PromisesSwift
+
+SPEC REPOS:
+  https://cdn.cocoapods.org/:
+    - PromisesObjC
+    - PromisesSwift
+
+SPEC CHECKSUMS:
+  PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  PromisesSwift: b39b85b2e2e2146b97f357500395117a6e5415a8
+
+PODFILE CHECKSUM: a8fab16f1a69bdb6d29d53c77a7640e9797da7ce
+
+COCOAPODS: 1.11.3
