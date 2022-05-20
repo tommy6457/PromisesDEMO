@@ -17,30 +17,49 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        promiseTest(success: false)
-
+        promiseTest(success: true)
     }
 
     func promiseTest(success: Bool){
 
-        let promise = Promise<String>(on: .main) { fulfill, reject in
 
-            if success {
-                // Resolve with a value.
-                fulfill("Hello world.")
-            } else {
-                // Resolve with an error.
-                reject(TestError.testerror)
-            }
 
+        all(doPromise1(),
+            doPromise2()
+        ).then{ _,_ in
+            print("都成功")
+        }.catch{ (error) in
+            print(error)
         }
 
-        promise.then { string in
-            print("\(string)")  //Hello world.
-        }.catch { error in
-            print(error.self)   //testerror
-        }
+    }
 
+    func doPromise1() -> Promise<String>{
+
+        return Promise<String>(on: .main) { fulfill, reject in
+//            print("任務1成功")
+//            fulfill("任務1成功")
+            print("任務1失敗")
+            reject(TestError.testerror)
+        }
+    }
+
+    func doPromise2() -> Promise<String> {
+
+        return Promise<String>(on: .main) { fulfill, reject in
+            print("任務2成功")
+            fulfill("任務2成功")
+//            print("任務2失敗")
+//            reject(TestError.testerror)
+        }
+    }
+
+    func doPromise3() -> Promise<String> {
+
+        return Promise<String>(on: .main) { fulfill, reject in
+            print("任務3成功")
+            fulfill("任務3成功")
+        }
     }
 
     func work1(_ string: String) -> Promise<String> {
